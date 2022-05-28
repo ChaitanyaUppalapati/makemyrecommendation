@@ -120,7 +120,7 @@ USE_I18N = True
 USE_TZ = True
 
 TEMPLATE_DIRS = [
-    os.path.join(BASE_DIR, 'Templates')
+    os.path.join(BASE_DIR, 'recommender/Templates')
 ]
 
 # Static files (CSS, JavaScript, Images)

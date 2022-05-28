@@ -1,1 +1,1 @@
-web: gunicorn movie-recommender.wsgi
+web: gunicorn movierecommender.wsgi

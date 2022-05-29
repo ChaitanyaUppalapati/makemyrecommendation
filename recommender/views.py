@@ -1,11 +1,11 @@
 from django.shortcuts import redirect, render
-import pickle
 import requests
+from preprocessing import import_dataframes
 
 
 # Create your views here.
 def index(request):
-    df=pickle.load(open('Datasets/new_movies.pkl','rb'))
+    df=import_dataframes()[0]
     movies_dict=df.to_dict()
     context={}
     context['list']=[]
@@ -21,8 +21,8 @@ def index(request):
     return render(request, 'index.html', context)
 
 def getrecommendations(request,movie_name):
-    df=pickle.load(open('Datasets/new_movies.pkl','rb'))
-    similarity=pickle.load(open('Datasets/similarity_matrix.pkl','rb'))
+    df=import_dataframes()[0]
+    similarity=import_dataframes()[1]
     movie_index=df[df['title']==movie_name].index[0]
     distances=similarity[movie_index]
     movie_list=sorted(list(enumerate(distances)),key=lambda x:x[1],reverse=True)

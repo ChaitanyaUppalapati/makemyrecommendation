@@ -78,6 +78,7 @@ def stemming(obj):
     return " ".join(li)
 new_movies['tags']=new_movies['tags'].apply(stemming)
 similarity_matrix = cosine_similarity(new_movies_matrix)
-pickle.dump(similarity_matrix,open('Datasets/similarity_matrix.pkl','wb'))
-pickle.dump(new_movies,open('Datasets/new_movies.pkl','wb'))
+
+def import_dataframes():
+    return [new_movies,similarity_matrix]
 
